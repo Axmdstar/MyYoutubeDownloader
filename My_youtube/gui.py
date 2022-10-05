@@ -37,7 +37,7 @@ class Ui:
         self.tk = gui.Tk()
 
         # backgroud image (our backgroud is not a color but a image)  
-        self.img = gui.PhotoImage(file = "background.png")
+        self.img = gui.PhotoImage(file ="My_youtube/background.png")
         # window size
         self.tk.geometry("800x320")
 
@@ -145,7 +145,7 @@ class Ui:
             # get the jpg from Url which is jpg so we use a function to break the code.
             thumb_n = self.yt_result.thumbnail_url
             self.resize_thumbnail(thumb_n)
-            print(self.yt_result.streams.filter( file_extension="mp4", mime_type = "video/mp4"))
+            # print(self.yt_result.streams.filter( file_extension="mp4", mime_type = "video/mp4"))
 
             # we got the link
             self.search_btn.config(text="Search")
@@ -161,7 +161,7 @@ class Ui:
     def path(self):
         self.filename = filedialog.askdirectory()
         self.path_Lbl.config(text = self.filename)
-        print(self.filename)
+        # print(self.filename)
 
     
     # changes video size        
@@ -169,10 +169,10 @@ class Ui:
         choice = self.select_box.get()
         if self.yt_result:
             resolution = self.yt_result.streams.filter(res = choice, progressive= True)[0].filesize  
-            print(resolution)
+            # print(resolution)
             # round the filesize and multiple by 10^6 
             self.got_size.config(text=f"{round(resolution * 10**-6, 2)}.mb")
-            print(choice)
+            # print(choice)
             self.stream = self.yt_result.streams.filter(res=choice, file_extension="mp4" , progressive= True )[0]
         else:
             print("No link")
@@ -183,10 +183,9 @@ class Ui:
         size = stream.filesize 
         downloaded = size - bytes_remaining
         percent = downloaded/size
-
-        print(percent)
-        print(downloaded)
-        print(f'Downloaded: {percent:.0%}', end='\r')
+        # print(percent)
+        # print(downloaded)
+        # print(f'Downloaded: {percent:.0%}', end='\r')
         self.Dp.config(text= f'Downloaded: {percent:.0%}' )
 
 
