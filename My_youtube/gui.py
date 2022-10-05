@@ -37,7 +37,7 @@ class Ui:
         self.tk = gui.Tk()
 
         # backgroud image (our backgroud is not a color but a image)  
-        self.img = gui.PhotoImage(file = "list-1.png")
+        self.img = gui.PhotoImage(file = "background.png")
         # window size
         self.tk.geometry("800x320")
 
